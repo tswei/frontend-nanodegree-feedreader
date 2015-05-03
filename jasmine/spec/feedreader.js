@@ -84,6 +84,8 @@ $(function() {
             expect(body.hasClass('menu-hidden')).not.toBe(true);
 
             $('.menu-icon-link').trigger(click);
+
+            expect(body.hasClass('menu-hidden')).toBe(true);
         });
 
     });
@@ -122,7 +124,7 @@ $(function() {
 
         beforeEach(function(done) {
             previousLoad = $('.feed')
-            loadFeed(0, function() {
+            loadFeed(1, function() {
                 done();
             });
         });
@@ -130,6 +132,48 @@ $(function() {
         it('ensures loading a new feed changes content', function(done) {
             expect($('.feed')).not.toBe(previousLoad);
             done();
+        });
+    });
+
+    /* TODO: Write a new test suite name "Feed Modification" */
+    describe('Feed Modification', function() {
+        var feed;
+
+        beforeEach(function() {
+            feed = {
+                name: 'RSS Tutorial',
+                url: 'http://www.w3schools.com/rss'
+            };
+
+            addFeed(feed);
+        })
+        /* TODO: Write a test that ensures a new feed can be added
+         * to the feed list. It must require the addition of a name
+         * and URL to be a complete feed.
+         */
+        it('is able to add a new feed with specified name and URL', function() {
+            expect(allFeeds.indexOf(feed)).not.toBe(-1);
+
+            var nullFeed = function() {
+                var notfeed = {
+                    name: undefined,
+                    url: undefined
+                };
+                addFeed(notfeed);
+            }
+
+            expect(nullFeed).toThrow();
+        });
+
+        /* TODO: Write a test that ensures a feed can be deleted
+         * from the feed list. It must remove the feed from both the
+         * model data and from the DOM.
+         */
+        it('is able to delete feeds', function() {
+            deleteFeed(feed);
+            
+            expect(allFeeds.indexOf(feed)).toBe(-1);
+            expect($('li:contains("'feed.name'")').length).toBe(0);
         });
     });
 }());
