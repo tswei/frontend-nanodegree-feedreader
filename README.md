@@ -1,12 +1,6 @@
 # Additional Features to be Implemented
 
-In addition to the exisiting features, tests have been created for
-expected future features of this RSS feed application. These tests
-expect the ability to add and delete an RSS feed from this web-
-application. When adding, the application will throw an error unless
-the new feed has both a valid name and url. When deleting, the
-application should remove the feed link from both the model and the
-DOM.
+In addition to the exisiting features, tests have been created for expected future features of this RSS feed application. These tests expect the ability to add and delete an RSS feed from this web-application. When adding, the application will throw an error unless the new feed has both a valid name and url. When deleting, the application should remove the feed link from both the model and the DOM.
 
 # Project Overview
 
