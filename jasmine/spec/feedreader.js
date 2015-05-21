@@ -9,6 +9,7 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function() {
+    "use strict"
     /* This is our first test suite - a test suite just contains
      * a related set of tests. This suite is all about the RSS
      * feeds definitions, the allFeeds variable in our application.
@@ -47,10 +48,11 @@ $(function() {
         /* This is our actual loop function to run tests two and
          * three on each feed item in the allFeeds object.
          */
-        for (var feed in allFeeds) {
-            definedURL(allFeeds[feed], feed);
-            definedName(allFeeds[feed], feed);
-        }
+
+        allFeeds.forEach(function(feed, index) {
+            definedURL(feed, index);
+            definedName(feed, index);
+        });
     });
 
 
@@ -74,8 +76,6 @@ $(function() {
          */
         it('changes visibility when the menu icon is clicked', function() {
             var click = $.Event('click');
-
-            expect(body.hasClass('menu-hidden')).toBe(true);
 
             $('.menu-icon-link').trigger(click);
 
@@ -107,14 +107,13 @@ $(function() {
         beforeEach(function(done) {
             loadFeed(0, function() {
                 callback = true;
-                done()
+                done();
             });
         });
 
         it('has at least a single .entry element in the .feed container', function(done) {
-            container = $('.feed');
 
-            expect(container.has('.entry').length).toBeGreaterThan(0);
+            expect($('.feed .entry').length).toBeGreaterThan(0);
             done();
         });
 
@@ -126,9 +125,9 @@ $(function() {
          */
         it('has unique .entry elements in the .feed container', function(done) {
 
-            var entries = $('.feed').find('.entry');
+            var entries = $('.feed .entry');
             var different = true;
-            var len = entries.length
+            var len = entries.length;
             for (var i=0; i<len; i++) {
                 for (var j=0; j<len; j++) {
                     if (i !== j && entries[i] === entries[j]) {
@@ -153,7 +152,7 @@ $(function() {
          it('calls the callback function passed as a parameter', function() {
 
             expect(callback).toBe(true);
-         })
+         });
 
 
     });
@@ -172,9 +171,11 @@ $(function() {
         var previousLoad;
 
         beforeEach(function(done) {
-            previousLoad = $('.feed')
-            loadFeed(1, function() {
-                done();
+            loadFeed(0, function() {
+                previousLoad = $('.feed');
+                loadFeed(1, function() {
+                    done();
+                });
             });
         });
 
