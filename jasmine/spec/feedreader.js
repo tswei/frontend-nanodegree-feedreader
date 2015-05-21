@@ -172,7 +172,7 @@ $(function() {
 
         beforeEach(function(done) {
             loadFeed(0, function() {
-                previousLoad = $('.feed');
+                previousLoad = $('.feed').html();
                 loadFeed(1, function() {
                     done();
                 });
@@ -180,7 +180,7 @@ $(function() {
         });
 
         it('ensures loading a new feed changes content', function(done) {
-            expect($('.feed')).not.toBe(previousLoad);
+            expect($('.feed').html()).not.toBe(previousLoad);
             done();
         });
     });
