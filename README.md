@@ -1,8 +1,16 @@
-# Additional Features to be Implemented
+# Feed-Reader Testing P6 Front-end Nanodegree
+
+## Instructions to Run.
+
+Open in your browser `file:///C:/PATH_TO_ROOT/index.html`
+
+Both the Jasmine testing suite and the feed-reader application should run from this file location.
+
+## Additional Features to be Implemented
 
 In addition to the exisiting features, tests have been created for expected future features of this RSS feed application. These tests expect the ability to add and delete an RSS feed from this web-application. When adding, the application will throw an error unless the new feed has both a valid name and url. When deleting, the application should remove the feed link from both the model and the DOM.
 
-# Project Overview
+## Project Overview
 
 In this project you are given a web-based application that reads RSS feeds. The original developer of this application clearly saw the value in testing, they've already included [Jasmine](http://jasmine.github.io/) and even started writing their first test suite! Unfortunately, they decided to move on to start their own company and we're now left with an application with an incomplete test suite. That's where you come in.
 
