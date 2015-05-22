@@ -1,5 +1,4 @@
 Copyright (c) 2008-2014 Pivotal Labs
-Copyright (c) 2014-2015 Udacity, Inc.
 Copyright (c) 2015 Turner Smith
 
 Permission is hereby granted, free of charge, to any person
